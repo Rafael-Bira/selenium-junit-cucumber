@@ -7,14 +7,14 @@ import utilities.BasePage;
 
 public class Header extends BasePage {
     // Locators
-    private final By headerTitle = By.className("app_logo");
+    private final By title = By.className("app_logo");
     private final By cartButton = By.cssSelector("[data-test='shopping-cart-link']");
     private final By cartBadge = By.cssSelector("[data-test='shopping-cart-badge']");
     private final By burgerMenuButton = By.id("react-burger-menu-btn");
     
     // Getters
     public WebElement getHeaderTitle() {
-        return find(headerTitle);
+        return find(title);
     }
     
     public WebElement getCartButton() {

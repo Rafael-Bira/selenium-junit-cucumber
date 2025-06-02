@@ -117,7 +117,4 @@ public class OverviewPage extends BasePage {
     public List<WebElement> getAllRemoveButtons() {
         return findAll(removeButton);
     }
-
-    // Actions
-
 }

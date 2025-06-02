@@ -19,23 +19,23 @@ public class HeaderSteps extends BaseStep {
         WebElement burgerMenu = header.getBurgerMenuBtn();
         
         Assertions.assertAll("Header UI",
-            () -> Assertions.assertTrue(title.isDisplayed(), "The header title is not displayed"),
-            () -> Assertions.assertEquals("Swag Labs", title.getText(), "The header title is not correct"),
+            () -> Assertions.assertTrue(title.isDisplayed(), "The Header title is not displayed"),
+            () -> Assertions.assertEquals("Swag Labs", title.getText(), "The Header title is not correct"),
             () -> Assertions.assertTrue(cart.isDisplayed(), "The cart button is not displayed"),
             () -> Assertions.assertTrue(cart.isEnabled(), "The cart button is not enabled"),
-            () -> Assertions.assertTrue(burgerMenu.isDisplayed(), "The burger menu button is not displayed"),
-            () -> Assertions.assertTrue(burgerMenu.isEnabled(), "The burger menu button is not enabled")
+            () -> Assertions.assertTrue(burgerMenu.isDisplayed(), "The Burger Menu button is not displayed"),
+            () -> Assertions.assertTrue(burgerMenu.isEnabled(), "The Burger Menu button is not enabled")
         );
     }
-
-     @Then("verify that the cart icon at the Header displays the number {int}")
+    
+    @Then("verify that the cart icon at the Header displays the number {int}")
     public void checkCartNumber(int number) {
         test.info("Verify that the cart icon at the Header displays the correct number");
 
         String actualNumber = header.getCartBadge().getText();
         Assertions.assertEquals(number, Integer.parseInt(actualNumber), "The cart number is different");
     }
-    
+
     @When("user clicks the Burger Menu button")
     public void clickBurgerMenubutton() {
         test.info("User clicks the Burger Menu button");

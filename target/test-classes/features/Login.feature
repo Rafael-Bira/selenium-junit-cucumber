@@ -10,7 +10,7 @@ Feature: Login page
 
     @forms @regression
     Scenario Outline: Login with invalid credentials
-        When user fills the form with username <username> and password <password>
+        When user fills the form with <username> and <password>
         Then an error message appears with the text <message>
         Examples:
             | username          | password       | message                                                                     |
@@ -26,7 +26,7 @@ Feature: Login page
     
     @forms @regression
     Scenario Outline: Login with valid credentials
-        When user logs in with username <username> and the common password
+        When user logs in with <username> and the common password
         Then verify that the Products page appears with the correct title
         Examples:
             | username                  |

@@ -94,14 +94,6 @@ public class OverviewSteps extends BaseStep {
         Assertions.assertEquals(expectedTotal, actualTotal, "The Total value is incorrect");
     }
 
-    @Then("the Overview page appears with the correct title")
-    public void verifyOverviewTitle() {
-        test.info("The Overview page appears with the correct title");
-
-        String title = overviewPage.getOverviewTitle().getText();
-        Assertions.assertEquals("Checkout: Overview", title, "The Overview page title is incorrect");
-    }
-
     @When("user clicks on the first item name")
     public String clickFirstItemName() {
         test.info("User clicks on the first item name");
@@ -119,5 +111,13 @@ public class OverviewSteps extends BaseStep {
         test.info("User clicks the Overview Cancel button");
 
         overviewPage.getCancelButton().click();
+    }
+
+    @Then("the Overview page appears with the correct title")
+    public void verifyOverviewTitle() {
+        test.info("The Overview page appears with the correct title");
+
+        String title = overviewPage.getOverviewTitle().getText();
+        Assertions.assertEquals("Checkout: Overview", title, "The Overview page title is incorrect");
     }
 }

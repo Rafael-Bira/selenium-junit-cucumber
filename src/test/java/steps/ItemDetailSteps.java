@@ -25,7 +25,6 @@ public class ItemDetailSteps extends BaseStep {
             () -> Assertions.assertTrue(backButton.isDisplayed(), "The Back to products button is not displayed"),
             () -> Assertions.assertTrue(backButton.isEnabled(), "The Back to products button is not enabled"),
             () -> Assertions.assertTrue(itemImg.isDisplayed(), "The item image is not displayed"),
-            () -> Assertions.assertTrue(itemImg.isDisplayed(), "The item image is not displayed"),
             () -> Assertions.assertTrue(itemName.isDisplayed(), "The item name is not displayed"),
             () -> Assertions.assertTrue(itemDesc.isDisplayed(), "The item description is not displayed"),
             () -> Assertions.assertTrue(itemPrice.isDisplayed(), "The item price is not displayed"),

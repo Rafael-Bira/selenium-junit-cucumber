@@ -51,9 +51,9 @@ public class ProductsSteps extends BaseStep {
         productsPage.clickAllAddButtons();
     }
     
-    @Then("the button text changes to {string}")
+    @Then("verify that the button text changes to {string}")
     public void checkButtonTextChange(String text) {
-        test.info("The button text changes");
+        test.info("Verify that the button text changes");
         
         List<Executable> btnAsserts = new ArrayList<>();
         
@@ -63,22 +63,7 @@ public class ProductsSteps extends BaseStep {
             btnAsserts.add(() -> Assertions.assertEquals(text, button.getText()));
         }
 
-        Assertions.assertAll("Button text", btnAsserts.stream());
-    }
-    
-    @Then("verify that the Products page appears with the correct title")
-    public void verifyProductsTitle() {
-        test.info("Verify that the Products page appears with the correct title");
-        
-        String title = productsPage.getProductsTitle().getText();
-        Assertions.assertEquals("Products", title, "The Products page title is incorrect");
-    }
-    
-    @And("goes to Item Detail page")
-    public void goToItemDetailPage() {
-        test.info("User goes to Item Detail page");
-
-        productsPage.getItemImgByIndex(0).click();
+        Assertions.assertAll("Button text change", btnAsserts.stream());
     }
 
     @When("user selects {string} from the Sort dropdown")
@@ -88,9 +73,9 @@ public class ProductsSteps extends BaseStep {
         productsPage.selectOptionByValue(option);
     }
 
-    @Then("the first item is {string} and the last is {string}")
+    @Then("the first name is {string} and the last is {string}")
     public void checkFirstAndLastNames(String first, String last) {
-        test.info("The first and last items are shown");
+        test.info("The first and last names are shown");
         
         List<WebElement> namesList = productsPage.getAllItemsNames();
         WebElement firstName = namesList.get(0);
@@ -114,6 +99,21 @@ public class ProductsSteps extends BaseStep {
             () -> Assertions.assertEquals(first, firstPrice.getText(), "The first price is not correct"),
             () -> Assertions.assertEquals(last, lastPrice.getText(), "The last price is not correct")
         );
+    }
+
+    @Then("verify that the Products page appears with the correct title")
+    public void verifyProductsTitle() {
+        test.info("Verify that the Products page appears with the correct title");
+        
+        String title = productsPage.getProductsTitle().getText();
+        Assertions.assertEquals("Products", title, "The Products page title is incorrect");
+    }
+    
+    @And("goes to Item Detail page")
+    public void goToItemDetailPage() {
+        test.info("User goes to Item Detail page");
+
+        productsPage.getItemImgByIndex(0).click();
     }
 
     @Then("the corresponding button text should be {string}")

@@ -20,22 +20,7 @@ public class LoginSteps extends BaseStep {
         commonFlows.goToLoginPage();
     }
     
-    @When("user fills the form with username {string} and password {string}")
-    public void fillForm(String username, String password) {
-        test.info("User fills the form with username and password");
-
-        loginPage.login(username, password);
-    }
-    
-    @Then("an error message appears with the text {string}")
-    public void verifyErrorMessage(String text) {
-        test.info("An error message appears");
-
-        String actualMessage = loginPage.getErrorMessage();
-        Assertions.assertEquals(actualMessage, text, "The error message is incorrect");
-    }
-
-    @Then("verify that the Login page elements are correctly displayed and enabled")
+        @Then("verify that the Login page elements are correctly displayed and enabled")
     public void verifyLoginPageUi() {
         test.info("Verify that the Login page elements are correctly displayed and enabled");
 
@@ -56,9 +41,24 @@ public class LoginSteps extends BaseStep {
         );
     }
 
-    @When("user logs in with username {string} and the common password")
+    @When("user fills the form with {string} and {string}")
+    public void fillForm(String username, String password) {
+        test.info("User fills the form with username and password");
+
+        loginPage.login(username, password);
+    }
+    
+    @Then("an error message appears with the text {string}")
+    public void verifyErrorMessage(String text) {
+        test.info("An error message appears");
+
+        String actualMessage = loginPage.getErrorMessage();
+        Assertions.assertEquals(actualMessage, text, "The error message is incorrect");
+    }
+
+    @When("user logs in with {string} and the common password")
     public void loginValid(String username) {
-        test.info("User logs in with username and the common password");
+        test.info("User logs in with valid username and the common password");
         
         loginPage.login(username, "secret_sauce");
     }
@@ -68,6 +68,6 @@ public class LoginSteps extends BaseStep {
         test.info("Verify that the Login page appears with the correct title");
 
         String title = loginPage.getLoginTitle().getText();
-        Assertions.assertEquals("Swag Labs", title, "The Login Page title is incorrect"); 
+        Assertions.assertEquals("Swag Labs", title, "The Login page title is incorrect"); 
     }
 }

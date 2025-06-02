@@ -44,6 +44,13 @@ public class CheckoutSteps extends BaseStep {
         checkoutPage.getCancelButton().click();
     }
 
+    @Then("user clicks the Continue button leaving all inputs empty")
+    public void clickContinueButton() {
+        test.info("User clicks the Continue button leaving all inputs empty");
+
+        checkoutPage.getContinueButton().click();
+    }
+
     @When("user fills the form with {string}, {string} and {string} and clicks the Continue button")
     public void fillForm(String firstName, String lastName, String postalCode) {
         test.info("User fills the form and clicks the Continue button");
@@ -57,12 +64,5 @@ public class CheckoutSteps extends BaseStep {
         
         String actualMessage = checkoutPage.getErrorMessage();
         Assertions.assertEquals(actualMessage, text, "The error message is incorrect");
-    }
-
-    @Then("user clicks the Continue button leaving all inputs empty")
-    public void clickContinueButton() {
-        test.info("User clicks the Continue button leaving all inputs empty");
-
-        checkoutPage.getContinueButton().click();
     }
 }
